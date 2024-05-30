@@ -1,0 +1,59 @@
+package web.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import web.model.User;
+import web.service.UserService;
+
+@Controller
+public class UserController {
+
+    private UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/")
+    public String printUsers(ModelMap model) {
+        model.addAttribute("allUsers", userService.listUsers());
+        return "/users/allUsers";
+    }
+
+    @GetMapping("/users/delete")
+    public String clearUser(@RequestParam(name = "id") Long id, ModelMap model) {
+        userService.clearUserById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/users/new")
+    public String newUser(@ModelAttribute("user") User user) {
+        return "/users/addForm";
+    }
+
+    @PostMapping()
+    public String addUser(@ModelAttribute("user") User user) {
+        userService.add(user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/users/change")
+    public String changeUser(@RequestParam(name = "id") Long id, Model model) {
+        model.addAttribute("user", userService.searchUser(id));
+        return "/users/changeForm";
+    }
+
+    @PostMapping("/users/change")
+    public String update(@ModelAttribute("user") User changedUser) {
+        userService.update(changedUser);
+        return "redirect:/";
+    }
+
+}
