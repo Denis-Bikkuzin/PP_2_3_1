@@ -50,7 +50,7 @@ public class AppConfig {
         Properties properties = new Properties();
         EntityManager.setDataSource(getDataSource());
         EntityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        EntityManager.setPackagesToScan("web.model");
+        EntityManager.setPackagesToScan("web");
         EntityManager.setJpaProperties(properties);
 
         properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
