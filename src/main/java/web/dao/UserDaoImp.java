@@ -16,30 +16,31 @@ public class UserDaoImp implements UserDao{
     private EntityManager entityManager;
 
     @Override
-    public void add(User user) {
+    public void addUser(User user) {
         entityManager.persist(user);
 
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<User> listUsers() {
-        return entityManager.createQuery("from User").getResultList();
+    public List<User> getAllUsers() {
+        return entityManager.createQuery("from User",User.class).getResultList();
     }
 
     @Override
-    public void clearUserById(Long id) {
-        entityManager.createQuery("DELETE User WHERE id = :id").setParameter("id",id).executeUpdate();
+    public void deleteUser(int id) {
+        entityManager.remove(entityManager.find(User.class, id));
 
     }
 
     @Override
-    public User searchUser(Long id) {
+    public User getUser(int id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    public void update(User user) {
+    public void updateUser(int id,User user) {
+        user.setId(id);
         entityManager.merge(user);
 
     }
