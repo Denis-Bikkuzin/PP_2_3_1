@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>User</title>
+    <h1>User:</h1>
 </head>
 <body>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>City</th>
-        <th>YoB</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.getId()}"/>
-        <td th:text="${user.getName()}"/>
-        <td th:text="${user.getSurname()}"/>
-        <td th:text="${user.City()}"/>
-        <td>
-            <a th:href="@{/edit(id=${user.getId()})}">Edit user</a>
-            <br>
-            <a th:href="@{/delete(id=${user.getId()})}">Delete user</a>
-        </td>
-    </tr>
-</table>
-
+<h2>
+    <p th:text="'ID:    ' + ${User.getId()}">VALUE</p>
+    <p th:text="'Name:    ' + ${user.getName()}">VALUE</p>
+    <p th:text="'SurName:    ' + ${user.getLastName()}">VALUE</p>
+    <p th:text="'City:    ' + ${user.getAge()}">VALUE</p>
+</h2>
 <br>
-<a href="new">
-    <input type="submit" value="Add new user">
-</a>
+<hr>
+<div>
+    <a th:href="@{/{id}/edit_user(id=${user.getId()})}">
+        <input type="button" value="EDIT USER"/>
+    </a>
+    <br>
+    <br>
+    <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+        <input type="submit" value="DELETE USER">
+    </form>
+</div>
+<div>
+
+</div>
 </body>
 </html>

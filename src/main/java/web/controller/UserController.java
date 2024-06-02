@@ -22,7 +22,7 @@ public class UserController {
     @GetMapping
     public String printUsers(ModelMap model) {
         model.addAttribute("allUsers", userService.listUsers());
-        return "/users/allUsers";
+        return "users/allUsers";
     }
 
     @GetMapping("/users/delete")
@@ -45,7 +45,7 @@ public class UserController {
     @GetMapping("/users/change")
     public String changeUser(@RequestParam(name = "id") Long id, Model model) {
         model.addAttribute("user", userService.searchUser(id));
-        return "/users/changeForm";
+        return "users/changeForm";
     }
 
     @PostMapping("/users/change")
