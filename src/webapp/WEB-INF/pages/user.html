@@ -26,7 +26,7 @@
         <td th:text="${user.surname}">surname</td>
         <td th:text="${user.city}">city</td>
         <td>
-            <button class="b2"><a th:href="@{/{id}/updateUser(id=${user.getId()})}">Update</a></button>
+            <button class="b2"><a th:href="@{/edit_user(id=${user.getId()})}">Update</a></button>
         </td>
         <td>
             <form th:method="DELETE" th:action="@{/deleteUser(id=${user.getId()})}">

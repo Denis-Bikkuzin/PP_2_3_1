@@ -1,7 +1,6 @@
 package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import web.dao.UserDao;
 import web.model.User;
@@ -24,7 +23,6 @@ public class UserServiceImp implements UserService {
     @Transactional
     public void addUser(User user) {
         userDao.addUser(user);
-
 
     }
 

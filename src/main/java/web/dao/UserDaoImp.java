@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 @Component
-public class UserDaoImp implements UserDao{
+public class UserDaoImp implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -24,13 +24,13 @@ public class UserDaoImp implements UserDao{
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
-        return entityManager.createQuery("from User",User.class).getResultList();
+        return entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override
     public void deleteUser(int id) {
-        entityManager.remove(getUser(id));
-
+        User user = entityManager.find(User.class, id);
+        entityManager.remove(user);
 
     }
 
