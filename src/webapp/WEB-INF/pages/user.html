@@ -12,21 +12,29 @@
     <thead>
     <tr>
         <th>id</th>
+        <th>name</th>
         <th>surname</th>
         <th>city</th>
-        <th>actions</th>
+
     </tr>
     </thead>
     <tbody>
     <tr th:each="user : ${users}">
 
         <td th:text="${user.id}">id</td>
-        <td th:text="${user.surName}">first name</td>
-        <td th:text="${user.city}">last name</td>
+        <td th:text="${user.name}">name</td>
+        <td th:text="${user.surname}">surname</td>
+        <td th:text="${user.city}">city</td>
         <td>
-            <a th:href="@{'edit?id=' + ${user.id}}">edit</a>
-            <a th:href="@{'delete?id=' + ${user.id}}">delete</a>
+            <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+                <input type="submit" class="b3" value="Delete">
+            </form>
         </td>
+
+        <td>
+            <button class="b2"><a th:href="@{/{id}/updateUser(id=${user.getId()})}">Update</a></button>
+        </td>
+
     </tr>
     </tbody>
 </table>
