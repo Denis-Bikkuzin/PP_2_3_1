@@ -22,7 +22,7 @@ public class UserController {
     @GetMapping("/")//+
     public String allUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "index";
+        return "user";
     }
 
     @GetMapping("new_user")//+
@@ -31,7 +31,7 @@ public class UserController {
         return "new_user";
     }
 
-    @PostMapping("/")//+
+    @PostMapping("/new_user")//+
     public String addUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/";
@@ -46,7 +46,7 @@ public class UserController {
     @GetMapping("/edit_user")//+
     public String editUserForm(Model model, @RequestParam("id") int id) {
         model.addAttribute("user", userService.getUser(id));
-        return "edit_user";
+        return "editor";
     }
 
     @PostMapping("/edit_user")//+

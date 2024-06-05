@@ -23,7 +23,6 @@
         <td th:text="${user.id}">id</td>
         <td th:text="${user.surName}">first name</td>
         <td th:text="${user.city}">last name</td>
-
         <td>
             <a th:href="@{'edit?id=' + ${user.id}}">edit</a>
             <a th:href="@{'delete?id=' + ${user.id}}">delete</a>
@@ -32,6 +31,6 @@
     </tbody>
 </table>
 
-<a th:href="@{/index}">Add User</a>
+<a th:href="@{/new_user}">Add User</a>
 </body>
 </html>
