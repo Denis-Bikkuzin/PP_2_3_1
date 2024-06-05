@@ -15,11 +15,11 @@
     <p><input type="hidden" th:field="*{id}"/></p>
     <p>Name: <input type="text" th:field="*{name}"/></p>
     <p>Surname: <input type="text" th:field="*{surname}"/></p>
-    <p>City: <input type="number" th:field="*{city}"/></p>
+    <p>City: <input type="text" th:field="*{city}"/></p>
     <p><input type="submit" value="Edit User"/></p>
 </form>
 
-<a th:href="@{/user}">Return</a>
+<a th:href="@{/}">Return</a>
 
 </body>
 </html>
