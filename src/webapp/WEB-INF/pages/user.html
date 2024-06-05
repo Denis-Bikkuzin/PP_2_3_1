@@ -26,13 +26,12 @@
         <td th:text="${user.surname}">surname</td>
         <td th:text="${user.city}">city</td>
         <td>
-            <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+            <button class="b2"><a th:href="@{/{id}/updateUser(id=${user.getId()})}">Update</a></button>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/deleteUser(id=${user.getId()})}">
                 <input type="submit" class="b3" value="Delete">
             </form>
-        </td>
-
-        <td>
-            <button class="b2"><a th:href="@{/{id}/updateUser(id=${user.getId()})}">Update</a></button>
         </td>
 
     </tr>
