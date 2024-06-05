@@ -2,6 +2,7 @@ package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public String getAllUsers(ModelMap model) {
+    public String allUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "index";
     }
@@ -35,17 +36,14 @@ public class UserController {
         return "new_user";
     }
 
-    @PostMapping("/")
-    public String addUser(@ModelAttribute("user") User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "new_user";
-        }
+    @PostMapping("/")//+
+    public String addUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/";
     }
 
-    @DeleteMapping("/deleteUser")
-    public String deleteUser(@RequestParam("id") int id) {
+    @GetMapping("/deleteUser")
+    public String delete(@RequestParam("id") int id) {
         userService.deleteUser(id);
         return "redirect:/";
     }
