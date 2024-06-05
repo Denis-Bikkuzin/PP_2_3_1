@@ -17,37 +17,37 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")//+
+    @GetMapping("/")
     public String allUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "user";
     }
 
-    @GetMapping("new_user")//+
+    @GetMapping("new_user")
     public String newUser(Model model) {
         model.addAttribute("user", new User());
         return "new_user";
     }
 
-    @PostMapping("/new_user")//+
+    @PostMapping("/new_user")
     public String addUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/";
     }
 
-    @DeleteMapping("/deleteUser")//+
+    @DeleteMapping("/deleteUser")
     public String delete(@RequestParam("id") int id) {
         userService.deleteUser(id);
         return "redirect:/";
     }
 
-    @GetMapping("/edit_user")//+
+    @GetMapping("/edit_user")
     public String editUserForm(Model model, @RequestParam("id") int id) {
         model.addAttribute("user", userService.getUser(id));
         return "editor";
     }
 
-    @PostMapping("/edit_user")//+
+    @PostMapping("/edit_user")
     public String editUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
         return "redirect:/";
