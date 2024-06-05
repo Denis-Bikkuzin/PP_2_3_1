@@ -19,20 +19,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/")//+
     public String allUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "index";
     }
 
-    @GetMapping("/user")
-    public String getUser(@RequestParam("id") int id, ModelMap model) {
-        model.addAttribute("user", userService.getUser(id));
-        return "user";
-    }
-
-    @GetMapping("/new_user")
-    public String getAddUser(@ModelAttribute("user") User user) {
+    @GetMapping("new_user")//+
+    public String newUser(Model model) {
+        model.addAttribute("user", new User());
         return "new_user";
     }
 
@@ -42,24 +37,21 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/deleteUser")
+    @GetMapping("/deleteUser")//+
     public String delete(@RequestParam("id") int id) {
         userService.deleteUser(id);
         return "redirect:/";
     }
 
-    @GetMapping("/edit_user")
-    public String editUserForm(ModelMap model, @RequestParam("id") int id) {
+    @GetMapping("/edit_user")//+
+    public String editUserForm(Model model, @RequestParam("id") int id) {
         model.addAttribute("user", userService.getUser(id));
         return "edit_user";
     }
 
-    @PatchMapping("/edit_user")
-    public String editUser(@ModelAttribute("user") User user,
-                           BindingResult bindingResult, @RequestParam("id") int id) {
-        if (bindingResult.hasErrors())
-            return "/edit_user";
-        userService.updateUser(id, user);
+    @PostMapping("/edit_user")//+
+    public String editUser(@ModelAttribute("user") User user){
+        userService.updateUser(user);
         return "redirect:/";
     }
 

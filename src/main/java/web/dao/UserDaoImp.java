@@ -39,8 +39,7 @@ public class UserDaoImp implements UserDao{
     }
 
     @Override
-    public void updateUser(int id,User user) {
-        user.setId(id);
+    public void updateUser(User user) {
         entityManager.merge(user);
 
     }
