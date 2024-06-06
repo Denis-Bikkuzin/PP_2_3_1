@@ -29,9 +29,7 @@
             <button class="b2"><a th:href="@{/edit_user(id=${user.getId()})}">Update</a></button>
         </td>
         <td>
-            <form th:method="DELETE" th:action="@{/deleteUser(id=${user.getId()})}">
-                <input type="submit" class="b3" value="Delete">
-            </form>
+            <a th:href="@{'deleteUser?id=' + ${user.id}}">delete</a> 
         </td>
 
     </tr>
