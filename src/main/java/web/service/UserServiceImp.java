@@ -8,7 +8,10 @@ import web.model.User;
 import javax.transaction.Transactional;
 import java.util.List;
 
-
+/*
+Этот класс UserServiceImp реализует интерфейс UserService и является сервисом,
+который предоставляет бизнес-логику для работы с пользователями.
+ */
 @Service
 public class UserServiceImp implements UserService {
 

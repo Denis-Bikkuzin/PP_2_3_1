@@ -7,7 +7,9 @@ import web.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-
+/*
+Класс UserDaoImp реализует интерфейс UserDao и предоставляет методы для взаимодействия с базой данных пользователей.
+ */
 @Repository
 @Component
 public class UserDaoImp implements UserDao {
@@ -22,7 +24,6 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
         return entityManager.createQuery("from User", User.class).getResultList();
     }

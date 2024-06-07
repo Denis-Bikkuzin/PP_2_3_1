@@ -6,7 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
-
+/*
+Класс UserController представляет собой контроллер в приложении Spring MVC,
+который обслуживает запросы, связанные с пользователями.
+ */
 @Controller
 public class UserController {
 

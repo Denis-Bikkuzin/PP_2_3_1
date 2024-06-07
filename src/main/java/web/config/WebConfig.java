@@ -14,6 +14,11 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("web")
+/*Этот класс предназначен для использования в конфигурации Spring для настройки компонентов,
+необходимых для работы с Thymeleaf в веб-приложении.
+Он позволяет указать, где и как Thymeleaf должен искать шаблоны для рендеринга,
+а также настроить ViewResolver для использования Thymeleaf в процессе обработки запросов.
+*/
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
