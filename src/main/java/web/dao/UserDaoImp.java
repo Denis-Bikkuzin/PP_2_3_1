@@ -11,7 +11,6 @@ import java.util.List;
 Класс UserDaoImp реализует интерфейс UserDao и предоставляет методы для взаимодействия с базой данных пользователей.
  */
 @Repository
-@Component
 public class UserDaoImp implements UserDao {
 
     @PersistenceContext

@@ -50,17 +50,22 @@ public class AppConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean EntityManager = new LocalContainerEntityManagerFactoryBean();
-        Properties properties = new Properties();
         EntityManager.setDataSource(getDataSource());
         EntityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         EntityManager.setPackagesToScan("web");
-        EntityManager.setJpaProperties(properties);
+        EntityManager.setJpaProperties(hibernateProperties());
 
+        return EntityManager;
+    }
+
+    @Bean
+    public Properties hibernateProperties() {
+        Properties properties = new Properties();
         properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
 
-        return EntityManager;
+        return properties;
     }
 
     @Bean
