@@ -23,9 +23,7 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
 @ComponentScan(value = "web")
-/*Этот класс предназначен для использования в конфигурации Spring для настройки компонентов,
-необходимых для работы с базой данных и JPA.
-*/
+
 public class AppConfig {
 
 

@@ -5,10 +5,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-/*
-Класс AppInit является частью конфигурации Spring MVC и является подклассом AbstractAnnotationConfigDispatcherServletInitializer,
-который предоставляет удобный способ настройки приложения Spring MVC без использования web.xml.
- */
+
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     // Метод, указывающий на класс конфигурации
